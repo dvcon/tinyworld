@@ -17,6 +17,7 @@ modules:
     requires:
       - name: tinydb
       - name: hdi_tinydb
+      - name: tiny_uaa
   - name: tinyui
     type: html5
     path: tinyui
@@ -25,9 +26,13 @@ modules:
         group: destinations
         properties:
           name: tinyjs_be
-          url: ~{service_url}
+          url: '~{service_url}'
+          forwardAuthToken: true
+      - name: tiny_uaa
 resources:
   - name: hdi_tinydb
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
+  - name: tiny_uaa
+    type: com.sap.xs.uaa
